@@ -1,0 +1,121 @@
+/*Fade*/
+@keyframes fade {
+	from { opacity: 1.0; }
+	50% { opacity: 0.4; }
+	to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+	from { opacity: 1.0; }
+	50% { opacity: 0.4; }
+	to { opacity: 1.0; }
+}
+
+@-webkit-keyframes shake {
+	0%, 100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	10%, 30%, 50%, 70%, 90% {
+		-webkit-transform: translateX(-10px);
+		transform: translateX(-10px);
+	}
+
+	20%, 40%, 60%, 80% {
+		-webkit-transform: translateX(10px);
+		transform: translateX(10px);
+	}
+}
+
+@keyframes shake {
+	0%, 100% {
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	10%, 30%, 50%, 70%, 90% {
+		-webkit-transform: translateX(-10px);
+		-ms-transform: translateX(-10px);
+		transform: translateX(-10px);
+	}
+
+	20%, 40%, 60%, 80% {
+		-webkit-transform: translateX(10px);
+		-ms-transform: translateX(10px);
+		transform: translateX(10px);
+	}
+}
+
+/*Pulse*/
+@keyframes pulse {
+	0%, 25%, 100%{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	50%{
+		-webkit-transform: scale(1.25);
+		transform: scale(1.25);
+	}
+
+	75%{
+		-webkit-transform: scale(.8);
+		transform: scale(.8);
+	}
+}
+
+@-webkit-keyframes pulse {
+	0%, 25%, 100%{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	50%{
+		-webkit-transform: scale(.8);
+		transform: scale(.8);
+	}
+
+	75%{
+		-webkit-transform: scale(1.25);
+		transform: scale(1.25);
+	}
+}
+
+/*Rotation*/
+@-webkit-keyframes rotateIn {
+	0% {
+		-webkit-transform-origin: center center;
+		transform-origin: center center;
+		-webkit-transform: rotate(-200deg);
+		transform: rotate(-200deg);
+	}
+
+	100% {
+		-webkit-transform-origin: center center;
+		transform-origin: center center;
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+}
+
+@keyframes rotateIn {
+	0% {
+		-webkit-transform-origin: center center;
+		-ms-transform-origin: center center;
+		transform-origin: center center;
+		-webkit-transform: rotate(-200deg);
+		-ms-transform: rotate(-200deg);
+		transform: rotate(-200deg);
+		opacity: 0;
+	}
+
+	100% {
+		-webkit-transform-origin: center center;
+		-ms-transform-origin: center center;
+		transform-origin: center center;
+		-webkit-transform: rotate(0);
+		-ms-transform: rotate(0);
+		transform: rotate(0);
+		opacity: 1;
+	}
+}

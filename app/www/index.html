@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' yourhost.com ws://localhost:35729 data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *;script-src 'self' localhost:35729 'unsafe-eval' 'unsafe-inline';"> -->
+        <title>Pegasus</title>
+        <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+        <link href="lib/ionic.material.min.css" rel="stylesheet">
+        <link href="css/animations.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src='https://maps.googleapis.com/maps/api/js'></script>
+        <script src="lib/extras/head.load.js" data-headjs-load='https://cdn.pegasusgateway.com/syrus-rsa/js/load.js'></script>
+        <!-- <script src="lib/extras/head.load.js" data-headjs-load='http://localhost/projects/dct/apps/syrus-rsa/js/load.js'></script> -->
+        <script>
+            window.setTimeout(function(){
+                if(!window.ALLGOOD){
+                    document.getElementById('fallback').style.display = "block";
+                    window.setTimeout(function(){
+                        document.getElementById('fallback').style.opacity = 1;
+                    }, 500)
+                }
+            }, 20000);
+        </script>
+        <style type="text/css">
+			.hide{
+				display: none !important;
+			}
+            #fallback{
+                -moz-transition: opacity 3s;
+                -webkit-transition: opacity 3s;
+                transition: opacity 3s;
+            }
+        </style>
+    </head>
+    <body ng-app="syrusrsa" animation="slide-left-right-ios">
+        <ion-nav-view></ion-nav-view>
+        <ion-content id='fallback' padding='true' scroll='false' style='display:none; opacity:0;'>
+            <div class='row' style='text-align:center;'>
+                <div class="col">
+                    <p><i class='ion-network' style='font-size: 100px;'></i></p>
+                    <p>THERE SEEMS TO BE A PROBLEM WITH YOUR INTERNET CONNECTION</p>
+                    <div class="button button-block button-positive" onclick='location.reload(true)'>TRY AGAIN</div>
+                </div>
+            </div>
+        </ion-content>
+    </body>
+</html>

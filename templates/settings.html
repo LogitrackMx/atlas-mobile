@@ -1,0 +1,36 @@
+<ion-view title='Settings'>
+	<ion-content padding='true'>
+		<h4>Application Settings</h4>
+		<ion-list>
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Units
+				</div>
+				<select ng-model='settings.units'>
+					<option value='0'>Metric (m, Km)</option>
+					<option value='1'>US (ft, mi)</option>
+				</select>
+			</label>
+			<ion-item><b>Default Zoom on map</b> : <span style='float:right;'>{{settings.zoom}}</span></ion-item>
+			<div class="item range">
+				<i class="icon ion-ios-minus-outline"></i>
+				<input type="range" name="refresh" min='1' max='20' ng-model='settings.zoom'>
+				<i class="icon ion-ios-plus-outline"></i>
+			</div>
+		</ion-list>
+		<button on-tap='logout()' class="button button-block button-assertive">Log out</button>
+		<button on-tap='unregister()' class="button button-block button-stable" style=''>Unregister</button>
+		<div class="row row-center">
+			<div class="col col-60">
+				<p>
+					v {{syrus_version}}<br>
+					{{version_message}}
+				</p>
+			</div>
+			<div class="col col-40">
+				<button class='button-block button button-balanced button-small' ng-show='new_version != syrus_version' ng-click='reload()'>Update</button>
+				<button class='button-block button button-positive button-small' ng-hide='new_version != syrus_version' ng-click='check_version()'>Check</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

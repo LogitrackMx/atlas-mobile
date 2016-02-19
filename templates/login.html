@@ -1,0 +1,20 @@
+<ion-content class='padding funky' scroll='false'>
+	<div class='center' ng-if='$root.logourl'>
+		<img ng-src="{{$root.logourl}}" style='width: 100%; max-width: 400px; padding: 40px;' alt="">
+	</div>
+	<form ng-submit='login(creds)'>
+		<div class="list" style='background:rgba(255,255,255, .8)'>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Username</span>
+				<input type="text" name='text' placeholder="Username" ng-model='creds.username'>
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Password</span>
+				<input type="password" name='pw' placeholder="Password" ng-model='creds.password'>
+			</label>
+		</div>
+		<button ng-disabled='!creds.username.length || !creds.password.length' class="button button-block button-positive">Sign in</button>
+	</form>
+	<p style="color: red;" ng-show='creds.username.length && creds.password.length'>{{error | uppercase}}</p>
+	<button on-tap='unregister()' class="button button-block button-stable">Unregister</button>
+</ion-content>

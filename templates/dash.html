@@ -1,0 +1,95 @@
+<ion-view title='Syrus Road Side Assistance'>
+	<ion-content ng-class='{funky: true}' overflow-scroll='true'>
+		<div class="row" ng-if='!main.vehicle'>
+			<div class="col">
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</div>
+		</div>
+		<div class="list card stable-bg" ng-if='main.vehicle' style='background:rgba(255,255,255,.5);'>
+			<div class="item item-avatar" style='background:none;' ng-if='main.vehicle.info.icon || main.vehicle.info.photo'>
+				<img ng-src="data:{{main.vehicle.info.icon_type}};base64,{{main.vehicle.info.icon}}" alt="" ng-if='main.vehicle.info.icon'>
+				<img ng-src="data:{{main.vehicle.info.photo_type}};base64,{{main.vehicle.info.photo}}" alt="" ng-if='main.vehicle.info.photo'>
+			</div>
+			<div class="item item-body vehicle" style='background:none;'>
+				<i class="icon ion-ios-circle-filled status" ng-class='{online: main.device.online}'></i>
+				{{main.vehicle.name}} ({{main.vehicle.info.license_plate}}) <br>
+				[{{main.device.imei}}] - <span style='font-style:italic'>IGN: {{main.device.io_ign? "ON":"OFF"}}</span><br>
+				<span>{{momentize(main.device.lastrx*1000) | amCalendar}}</span>
+			</div>
+		</div>
+		<!-- <h3 class="text-center" style="color: white; font-weight: bold;" ng-if='!main.vehicle'>
+			Syrus Roadside Assitance
+		</h3> -->
+		<br>
+		<h3 class="text-center" style="color: white; font-weight: bold;" ng-if='!main.vehicle'>
+			Select a vehicle to get started
+		</h3>
+		<div class="row row-top" ng-if='main.vehicle'>
+			<div class="col col-50 text-center">
+				<button class="button button-block" ng-click='sos()' style='height: 100px; font-size:100px; background-color:#d71e1e;'>
+					<!-- <span ng-if='!confirm_sos'>+</span> -->
+					<img ng-if='!confirm_sos' src="img/sos.svg" alt="" style='height:100px;'>
+					<span ng-if='confirm_sos' style='font-size:12px; color:white;'>Are you sure?</span>
+				</button>
+				<h4 style='color:white'>Call SOS center</h4>
+			</div>
+			<div class="col col-50 text-center">
+				<button class="button button-energized button-block" ui-sref='views.photos' style='height: 100px;'>
+					<i class="icon ion-camera big_icon"></i>
+				</button>
+				<h4 style='color:white'>Photo Capture</h4>
+			</div>
+		</div>
+		<div class="row" ng-if='main.vehicle'>
+			<div class="col col-80 col-offset-10">
+				<button class="button button-block button-balanced" ui-sref='views.call'>
+					<i class="icon ion-android-call"></i> &nbsp;&nbsp; Authorized Numbers
+				</button>
+			</div>
+
+		</div>
+		<div class="row" ng-if='main.vehicle'>
+			<div class="col col-80 col-offset-10">
+				<h4 style='color:white;'>{{main.state.ionames.io_out1 || "Output 1"}}</h4>
+				<button class="button button-block button-stable
+				{{main.state.pending_actions.out1_pending != null ? '' : main.state.ios.io_out1 != main.state.ios.out1_instruction_set ? 'fade': '' }}" ng-click='toggle1()'>
+					{{
+						(main.state.pending_actions.out1_pending == null) ? (
+							(main.state.ios.io_out1 == main.state.ios.out1_instruction_set) ? (
+								main.state.ios.io_out1? 'Enabled':'Disabled'
+							):(
+								main.state.ios.io_out1? 'Disabling':'Enabling'
+							)
+						):'Communicating'
+					}}
+					<!-- <ion-spinner icon='lines' ng-if='main.state.pending_actions.out1_pending != null || main.state.ios.io_out1 != main.state.ios.out1_instruction_set'></ion-spinner> -->
+				</button>
+			</div>
+		</div>
+		<div class="row" ng-if='main.vehicle'>
+			<div class="col col-80 col-offset-10">
+				<h4 style='color:white;'>{{main.state.ionames.io_out2 || "Output2" }}</h4>
+				<button class="button button-block button-stable
+				{{main.state.pending_actions.out2_pending != null ? '' : main.state.ios.io_out2 != main.state.ios.out2_instruction_set ? 'fade': '' }}" ng-click='toggle2()'>
+					{{
+						(main.state.pending_actions.out2_pending == null) ? (
+							(main.state.ios.io_out2 == main.state.ios.out2_instruction_set) ? (
+								main.state.ios.io_out2? 'Enabled':'Disabled'
+							):(
+								main.state.ios.io_out2? 'Disabling':'Enabling'
+							)
+						):'Communicating'
+					}}
+					<!-- <ion-spinner icon='lines' ng-if='main.state.pending_actions.out2_pending != null || main.state.ios.io_out2 != main.state.ios.out2_instruction_set'></ion-spinner> -->
+				</button>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+	</ion-content>
+</ion-view>

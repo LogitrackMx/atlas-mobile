@@ -1,0 +1,51 @@
+<ion-view title="Analysis">
+	<ion-header-bar class="bar-subheader">
+		<div class="button-bar" style='height:100%'>
+			<div style='max-width:none; height:100%; line-height:50px;' class="button" ng-click='view_today()'><i class="ion-calendar"></i></div>
+			<div style='max-width:none; height:100%; line-height:50px;' class="button" ng-click='view_yesterday()'><i class="ion-calendar"></i> -1</div>
+			<div style='max-width:none; height:100%; line-height:50px;' class="button" ng-click='view_last(7)'><i class="ion-calendar"></i> -7</div>
+			<div style='max-width:none; height:100%; line-height:50px;' class="button" ng-click='view_last(30)'><i class="ion-calendar"></i> -30</div>
+		</div>
+	</ion-header-bar>
+	<ion-content padding='false' style='text-align: center;'>
+		<div class="row row-center">
+			<div class="col">
+				<label class='item-input-wrapper' for="">
+					<input style='background:none;' type="date" class='text-center' name='from' placeholder="From" ng-model='range.from' max='{{max_from}}'>
+				</label>
+			</div>
+			<div class="col">
+				<label class='item-input-wrapper' for="">
+					<input style='background:none;' type="date" class='text-center' name='to' placeholder="From" ng-model='range.to' min='{{min_to}}' max='{{today}}'>
+				</label>
+			</div>
+		</div>
+		<ion-list>
+			<ion-item class='item-toggle'>
+				Format time values?
+				<label class="toggle toggle-calm">
+					<input type="checkbox" ng-model='view.formated'>
+					<div class="track">
+						<div class="handle"></div>
+					</div>
+				</label>
+			</ion-item>
+		</ion-list>
+		<div class='striped'>
+		<div class="row row-center" ng-repeat='(counter, value) in counters' ng-if='value != null && counter_labels[counter]'>
+			<div class="col col-67 text-left">
+				{{counter_labels[counter]}}
+			</div>
+			<div class="col col-33" ng-if='timed.indexOf(counter)<0'>
+				<span>{{ value | number: 2 }}</span>
+			</div>
+			<div class="col col-33" ng-if='timed.indexOf(counter)>=0'>
+				<span>{{ format(value, view.formated) }}</span>
+			</div>
+		</div>
+		</div>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+	</ion-content>
+</ion-view>

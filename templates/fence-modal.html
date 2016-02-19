@@ -1,0 +1,43 @@
+<ion-modal-view>
+	<ion-header-bar style='background: #005199;'>
+		<h1 class="title" style='color:white;'>GeoFence Setup</h1>
+	</ion-header-bar>
+	<ion-content style='background: rgba(255,255,255,.9);'>
+		<div class="row">
+			<div class="col col-100">
+				An email is sent by default to this account. You may provide additional email addresses to notify as well. <br />
+			</div>
+		</div>
+		<ion-list style='background: none;'>
+			<!-- <label class="item item-input" ng-repeat='sms in fence.sms'>
+				<input type="number" placeholder="SMS to:" ng-model='sms'>
+			</label> -->
+			<label class="item item-input">
+				<input type="text" placeholder="Zone (e.g Home, Office)" ng-model='fence.name'>
+			</label>
+			<label class="item item-input" ng-repeat='e in fence.emails track by $index'>
+				<input type="email" placeholder="Email to:" ng-model='fence.emails[$index]'>
+			</label>
+			<ion-item><b>Radius</b> :
+				<span style='float:right;'>
+					{{ main.units == 0 ? fence.range.value : (fence.range.value >= 50)? fence.range.value*3.33 : fence.range.value/1.6 | number:2 }}
+					{{ main.units == 0 ? fence.range.units : (fence.range.value >= 50)? 'ft' : 'mi'}}
+					<!-- {{fence.range.value}} {{fence.range.units}} -->
+				</span>
+			</ion-item>
+			<div class="item range">
+				<i class="icon ion-ios-minus-outline"></i>
+				<input type="range" name="range" min='0' max='25' ng-model='fence.value'>
+				<i class="icon ion-ios-plus-outline"></i>
+			</div>
+		</ion-list>
+		<div class="row">
+			<div class="col col-50">
+				<div class="button button-positive button-block" on-tap='setFence()'>SET FENCE</div>
+			</div>
+			<div class="col col-50">
+				<div class="button button-assertive button-block" on-tap='fence_modal.hide()'>CANCEL</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

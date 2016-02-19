@@ -1,0 +1,42 @@
+<ion-view title="Photos">
+	<ion-content class="padding">
+		<div class="row">
+			<div class="col text-center"><h3>{{main.vehicle.name}}</h2></div>
+		</div>
+		<ion-list class="">
+			<ion-item class="">
+				<label class='item-input-wrapper' for="">
+					<input style='background:none; width:100%;' type="date" class='text-center' name='from' placeholder="From" ng-model='range.from' max='{{today}}'>
+				</label>
+			</ion-item>
+		</ion-list>
+		<ion-scroll class="" style='height:200px;' ng-if='events.length'>
+			<div class="list">
+				<div class='item' ng-class='{"selected_event": e == selected_event}' style='padding:0px;' ng-repeat='e in events'>
+					<div class="row row-center">
+						<div class="col col-50">
+							<a href="" ng-click="load_pics(e)">{{e.id}}</a> <br>
+							<span>{{momentize(e.time) | amDateFormat:'hh:mm:ss a'}}</span>
+						</div>
+						<div class="col col-50">
+							<img ng-src="https://maps.google.com/maps/api/staticmap?size=240x150&markers=color:red|{{e.lat}},{{ e.lon }}&sensor=true&zoom=13" style='width:100%;'>
+							<br>
+							{{e.lat}},{{e.lon}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-scroll>
+		<h4 ng-if='events.length'>{{events.length}} Photo Events</h4>
+		<h3 ng-if='!events.length'>No Photo events</h3>
+		<button class="button-positive button button-calm button-block" ng-click='take_photo()'>TAKE PHOTO</button>
+		<ion-slide-box class="" ng-if='photos' show-pager='false'>
+			<ion-slide class="text-center" ng-repeat='photo in photos'>
+				<img ng-src="data:image/jpeg;base64, {{photo.b64data}}" alt="" style='max-width:100%; margin:auto; min-height:200px;'>
+				<h3>Camera : {{photo.source}}</h3>
+				<h4 ng-if='photo.status_no != 4'>{{photo.status}} ({{photo.status_no}})</h4><br>
+				<button ng-if='photo.status_no != 4' class='button button-calm button-block' ng-click='load_pics(selected_event)'> Retry </button>
+			</ion-slide>
+		</ion-slide-box>
+	</ion-content>
+</ion-view>

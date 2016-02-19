@@ -1,0 +1,65 @@
+/*.gm-style .gmnoprint:not([title="syrus_marker"]){display: none}
+.gm-style .gmnoprint:last-child{display:block !important;}*/
+
+[title='syrus_marker'] img{
+	display: none;
+}
+
+[title='syrus_marker']{
+	transition: background 750ms;
+	opacity: 1 !important;
+	border-radius: 100px;
+	background: rgba(100,100,100,.7);
+}
+
+[title='syrus_marker']:before{
+	content: '&nbsp';
+	color: #FFF;
+	font-size: 0px;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -5px;
+	margin-left:-5px;
+	border-radius: 10px;
+	border: 5px solid rgba(255, 255, 255, 1);
+	transition: margin-top 750ms, border-bottom-width 750ms, border-color 750ms;
+}
+
+.on[title='syrus_marker']{
+	background: rgba(32,76,139,.5);
+}
+.on[title='syrus_marker']:before{
+	border-color:rgba(0,0,0,0);
+	border-bottom-color: white;
+	border-bottom-width: 10px;
+	margin-top: -10px !important;
+}
+
+.off[title='syrus_marker']{
+	background: rgba(232,44,12,.5);
+}
+
+.funky{
+	background-image: url("bg.jpg");
+	background-position: center;
+	background-size: auto 100%;
+}
+.selected_event{
+	background: rgba(0,0,0,.1)
+}
+
+.big_icon::before{
+	font-size:120px !important;
+}
+
+.popup-buttons .button{
+	padding:0 !important;
+}
+.custom_bar{background:#d71e1e !important; color:white !important;}
+
+.striped > div:nth-child(2n){
+	background:#F2F2F2;
+}

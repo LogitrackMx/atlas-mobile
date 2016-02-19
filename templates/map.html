@@ -1,0 +1,61 @@
+<ion-view title="Maps">
+	<ion-content class="" scroll='false'>
+		<button class="button button-fab button-fab-top-right {{$parent.tracking? 'button-balanced':'button-assertive'}}"  ng-click='$parent.tracking = !$parent.tracking'>
+			<i class="icon ion-android-navigate"></i>
+		</button>
+		<button class="button button-fab button-fab-bottom-left button-calm" ng-click='map(true)'>
+			<i class="icon ion-android-locate"></i>
+		</button>
+		<ui-gmap-google-map center="mapData.map.center" zoom="zoom" draggable='true' ng-if='render_map'>
+			<ui-gmap-marker
+				icon="icon"
+				idKey='"marker"'
+				coords="mapData.marker.center"
+				visible='mapData.marker.visible'
+				click='showInfo()'
+				showWindow='true'
+				options='{title: "syrus_marker", optimized:false}'>
+					<ui-gmap-window
+						show='mapData.info.visible'
+						options="mapData.windowOpts"
+						closeClick='hideInfo()'>
+						<div style='min-height:150px; max-height: 200px; color:grey; max-width: 280px; min-width:270px;'>
+							<button style='bottom:2px; right:0px;' class="button button-stable button-fab button-fab-bottom-right" ng-click='$parent.navigate()'>
+								<i class="icon ion-map"></i>
+							</button>
+							<div class="row">
+								<div class="col"><b>{{main.vehicle.name}}</b></div>
+								<div class="col">{{main.vehicle.imei}}</div>
+							</div>
+							<div class="row">
+								<div class="col">{{date}}</div>
+								<div class="col col-67">{{address}}</div>
+							</div>
+							<div class="row" ng-hide="{{mapData.data.location.gpsvalid}}">
+								<div class="col col-100" style='color:darkred; text-align:center; font-style:italic;'>No valid GPS Date</div>
+							</div>
+							<div class="row">
+								<div class="col">Lat: {{mapData.data.location.lat }}</div>
+								<div class="col">Long: {{mapData.data.location.lon }}</div>
+							</div>
+							<div class="row">
+								<div class="col" ng-class='{live: mapData.data.live}' style='color:red;'><b>{{mapData.data.live? 'Live' : 'Last Location'}}</b></div>
+								<div class="col">
+									{{ (mapData.units == 0 ? mapData.data.location.mph*1.6 : mapData.data.location.mph) | number:2 }}
+									{{ mapData.units == 0 ? 'km/h' : 'mph' }}
+								</div>
+							</div>
+						</div>
+					</ui-gmap-window>
+			</ui-gmap-marker>
+			<!-- <ui-gmap-polyline
+				path='mapData.polyline'
+				stroke='{weight:3, color: "#004684", opacity:1}'
+				clickable='false'
+				editable='false'
+				draggable='false'
+				visible='true'>
+			</ui-gmap-polyline> -->
+		</ui-gmap-google-map>
+	</ion-content>
+</ion-view>

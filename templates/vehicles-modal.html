@@ -1,0 +1,22 @@
+<ion-modal-view>
+	<ion-header-bar style='background: #005199;'>
+		<h1 class="title" style='color:white;'>Select a Vehicle</h1>
+	</ion-header-bar>
+	<ion-header-bar class="bar bar-subheader item-input-inset">
+	  <label class="item-input-wrapper">
+	    <i class="icon ion-ios-search placeholder-icon"></i>
+	    <input type="search" placeholder="Search" ng-model='vehicle_filter.$'>
+	    <i class="icon ion-ios-close-empty placeholder-icon" on-tap='vehicle_filter.$ = "" ' ng-show='vehicle_filter.$.length' ></i>
+	  </label>
+	  <button class="button button-clear" on-tap='refreshVehicles()'>
+	    <i class="icon ion-refresh"></i>
+	  </button>
+	</ion-header-bar>
+	<ion-content style='background: rgba(255,255,255,.9);'>
+		<ion-item class="item-icon-right vehicle" collection-repeat="v in objects.vehicles | filter: vehicle_filter" on-tap='changeVehicle(v)' item-height:'55'>
+			<i class="icon ion-ios-circle-filled status" ng-class='{online: v.online}'></i>
+			{{v.name}}
+			<span class="item-note">{{v.imei}}</span>
+		</ion-item>
+	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,161 @@
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+@font-face {
+	font-family: 'AvenirNextLTPro';
+	src: url("AvenirNextLTPro-Regular.ttf") format("truetype");
+}
+
+*:not(i){
+	font-family: 'AvenirNextLTPro' !important;
+}
+
+/*Custom icons*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-azqtnl');
+	src:url('fonts/icomoon.eot?#iefix-azqtnl') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-azqtnl') format('woff'),
+		url('fonts/icomoon.ttf?-azqtnl') format('truetype'),
+		url('fonts/icomoon.svg?-azqtnl#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+	display: inline-block;
+	speak: none;
+	font-variant: normal;
+	text-transform: none;
+	text-rendering: auto;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-car:before {
+	content: "\e601";
+}
+.icon-car-alarm:before {
+	content: "\e602";
+}
+.icon-car-bigger:before {
+	content: "\e603";
+}
+.icon-cogs:before {
+	content: "\e600";
+}
+.icon-computer:before {
+	content: "\e604";
+}
+.icon-picture:before {
+	content: "\e605";
+}
+.icon-syrus-mobile:before {
+	content: "\e606";
+}
+.icon-world:before {
+	content: "\e607";
+}
+
+/*Custon icons*/
+body {
+	-webkit-touch-callout: none;    /* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+	-webkit-user-select: none;      /* prevent copy paste, to allow, change 'none' to 'text' */
+	color: #666;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+
+}
+/*Animations*/
+.center{
+	text-align: center;
+}
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.fade {
+	animation:fade 1s infinite;
+	-webkit-animation:fade 1s infinite;
+	/*color:#005797 !important;*/
+}
+
+.colorless_fade{
+	animation:fade 2000ms infinite;
+	-webkit-animation:fade 2000ms infinite;
+}
+
+.shake{
+	animation:shake 2s inifinite;
+	-webkit-animation:shake 2s infinite;
+}
+
+.pulse{
+	animation:fade 500ms infinite;
+	-webkit-animation:fade 500ms infinite;
+	color: #005797;
+}
+
+.alert{
+	animation:fade 500ms infinite;
+	-webkit-animation:fade 500ms infinite;
+	color: red;
+}
+
+.clear_bg{
+	background-color: transparent !important;
+}
+
+.angular-google-map-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.disabled_action{
+	background: rgba(0,0,0,.2);
+	-webkit-filter: blur(2px) grayscale(1);
+	-o-filter: blur(2px) grayscale(1);
+	-moz-filter: blur(2px) grayscale(1);
+	filter: blur(2px) grayscale(1);
+}
+
+.live{
+	color:green!important;
+}
+
+.toggle_status{
+	background: rgba(0,0,0,.4);
+	color:white;
+}
+
+.vehicle .status{
+	color: red;
+}
+
+.vehicle .status.online{
+	color: #7CFC00;
+}
